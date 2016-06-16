@@ -23,7 +23,7 @@ RUN curl https://bintray.com/sbt/rpm/rpm > /etc/yum.repos.d/bintray-sbt-rpm.repo
 
 # Add users and some basic dot files
 RUN yum install -y sudo
-RUN groupadd deploy && useradd -m -g deploy -p deploy deploy && usermod -aG wheel deploy
+RUN groupadd deploy && useradd -m -g deploy deploy && usermod -aG wheel deploy && echo deploy | passwd deploy --stdin
 
 USER deploy
 RUN cd && mkdir go && echo 'export GOPATH="/home/deploy/go"' >> .bashrc && echo 'export PATH="/usr/local/go/bin:$GOPATH/bin:$PATH"' >> .bashrc
