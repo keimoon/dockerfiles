@@ -1,4 +1,4 @@
-FROM keimoon/dev:latest
+FROM keimoon/common:latest
 
 ENV PG_MAJOR=9.5 PG_MINOR=9.5-2 PG_YUM=95 PGDATA=/data/postgres
 
@@ -7,4 +7,7 @@ RUN yum localinstall -y https://download.postgresql.org/pub/repos/yum/${PG_MAJOR
     mkdir -p ${PGDATA} && chown postgres:postgres ${PGDATA}
 
 USER postgres
-RUN /usr/pgsql-9.5/bin/initdb
+RUN /usr/pgsql-9.5/bin/initdb && echo "listen_addresses = '*'" >> ${PG_DATA}/postgresql.conf
+
+EXPOSE 5432
+CMD /usr/pgsql-9.5/bin/postgres -D ${PGDATA}
