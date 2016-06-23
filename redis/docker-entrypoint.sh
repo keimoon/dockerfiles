@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ $1 != 'redis' ]; then
+if [ "x$1" != 'xredis' ]; then
     exec $@
     exit $?
 fi

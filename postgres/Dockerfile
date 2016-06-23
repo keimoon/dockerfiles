@@ -9,4 +9,6 @@ RUN yum localinstall -y https://download.postgresql.org/pub/repos/yum/${PG_MAJOR
 
 ADD docker-entrypoint.sh /
 RUN chmod 755 /docker-entrypoint.sh
+EXPOSE 5432
 ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["postgres"]
