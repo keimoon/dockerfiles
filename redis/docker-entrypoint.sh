@@ -15,7 +15,7 @@ test $? -ne 0 && exit 1
 
 if [ ! -e $REDIS_DATA/redis.conf ]; then
     cp /redis.conf $REDIS_DATA && chown redis:redis $REDIS_DATA/redis.conf
-    test $? -ne0 && exit 1
+    test $? -ne 0 && exit 1
 fi
 
 shift
